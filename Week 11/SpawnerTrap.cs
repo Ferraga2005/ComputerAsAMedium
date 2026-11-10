@@ -22,8 +22,15 @@ public class SpawnerTrap : MonoBehaviour
     {
         if (otherObject.CompareTag("Player"))
         {
+            if(enemy1 != null) 
+            {
             enemy1.SetActive(true);
+            }
+            if(enemy2 != null) 
+            {
             enemy2.SetActive(true);
+            }
+            
         }
     }
 }
