@@ -1,5 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -32,19 +34,22 @@ public class PlayerMovement : MonoBehaviour
     {
 
         // Horizontal Movement
-        if (Keyboard.current.aKey.isPressed)
+        // In rotation, 0 is up.
+        if (Keyboard.current.aKey.isPressed) // Left
         {
             speedX = -moveSpeed;
             spriteRenderer.sprite = plrRight;
             transform.localScale = new Vector3(-.3f, .3f, .3f);
             firepoint.transform.localPosition = new Vector2(1.5f, -.5f);
+            firepoint.transform.rotation = Quaternion.Euler(0, 0, 90);
         }
-        else if (Keyboard.current.dKey.isPressed)
+        else if (Keyboard.current.dKey.isPressed) // Right
         {
             speedX = moveSpeed;
             spriteRenderer.sprite = plrRight;
             transform.localScale = new Vector3(.3f, .3f, .3f);
             firepoint.transform.localPosition = new Vector2(1.5f, -.5f);
+            firepoint.transform.rotation = Quaternion.Euler(0, 0, 270);
         }
         else
         {
@@ -52,17 +57,19 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Vertical Movement
-        if (Keyboard.current.wKey.isPressed)
+        if (Keyboard.current.wKey.isPressed) // Up
         {
             speedY = moveSpeed;
             spriteRenderer.sprite = plrTop;
             firepoint.transform.localPosition = new Vector2(0, 1.5f);
+            firepoint.transform.rotation = Quaternion.Euler(0, 0, 0);
         }
-        else if (Keyboard.current.sKey.isPressed)
+        else if (Keyboard.current.sKey.isPressed) // Down
         {
             speedY = -moveSpeed;
             spriteRenderer.sprite = plrBottom;
             firepoint.transform.localPosition = new Vector2(.5f, -1.5f);
+            firepoint.transform.rotation = Quaternion.Euler(0, 0, 180);
         }
         else
         {
